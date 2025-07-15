@@ -13,9 +13,10 @@ from telegram.ext import (
 
 #===== CONFIG =====
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN") DATA_FILE = "bot_data.json"
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+DATA_FILE = "bot_data.json"
 
-===== GLOBAL STATE =====
+#===== GLOBAL STATE =====
 
 bot_data = { "links": [], "current_link_index": 0, "rotation_interval": 300,  # default 5 minutes "admins": [], "users": [] }
 
