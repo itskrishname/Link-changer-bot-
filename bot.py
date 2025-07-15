@@ -1,4 +1,15 @@
-import os import asyncio import json from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, CallbackQueryHandler, ContextTypes
+import os
+import asyncio
+import json
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    MessageHandler,
+    filters,
+    CallbackQueryHandler,
+    ContextTypes
+)
 
 ===== CONFIG =====
 
