@@ -1,9 +1,10 @@
 {
-  "links": [],
-  "current_link_index": 0,
-  "rotation_interval": 300,
-  "admins": ["7660990923"],
-  "users": []
+    "links": [
+        "https://example1.com",
+        "https://example2.com"
+    ],
+    "current_link_index": 0,
+    "rotation_interval": 300,
+    "admins": ["YOUR_ADMIN_TELEGRAM_ID", "7660990923"],
+    "users": []
 }
-
-#YOUR_TELEGRAM_USER_ID
