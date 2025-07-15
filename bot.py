@@ -11,7 +11,7 @@ from telegram.ext import (
     ContextTypes
 )
 
-===== CONFIG =====
+#===== CONFIG =====
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN") DATA_FILE = "bot_data.json"
 
@@ -19,25 +19,25 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN") DATA_FILE = "bot_data.json"
 
 bot_data = { "links": [], "current_link_index": 0, "rotation_interval": 300,  # default 5 minutes "admins": [], "users": [] }
 
-===== STORAGE =====
+#===== STORAGE =====
 
 def load_data(): global bot_data if os.path.exists(DATA_FILE): with open(DATA_FILE, "r") as f: bot_data = json.load(f)
 
 def save_data(): with open(DATA_FILE, "w") as f: json.dump(bot_data, f)
 
-===== ADMIN CHECK =====
+#===== ADMIN CHECK =====
 
 def is_admin(user_id): return str(user_id) in bot_data["admins"]
 
-===== AUTO LINK ROTATION =====
+#===== AUTO LINK ROTATION =====
 
 async def auto_rotate(): while True: await asyncio.sleep(bot_data["rotation_interval"]) if bot_data["links"]: bot_data["current_link_index"] = (bot_data["current_link_index"] + 1) % len(bot_data["links"]) save_data()
 
-===== GET CURRENT LINK =====
+#===== GET CURRENT LINK =====
 
 def current_link(): if not bot_data["links"]: return "No link set." return bot_data["links"][bot_data["current_link_index"]]
 
-===== COMMAND HANDLERS =====
+#===== COMMAND HANDLERS =====
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE): user_id = str(update.effective_user.id) if user_id not in bot_data["users"]: bot_data["users"].append(user_id) save_data()
 
@@ -67,7 +67,7 @@ async def adminslist(update: Update, context: ContextTypes.DEFAULT_TYPE): if str
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE): await update.message.reply_text(""" Commands: /start - Get started /addlink LINK /removelink LINK /listlinks /settimer 5|10|20 /currentlink /broadcast MESSAGE /addadmin USER_ID /removeadmin USER_ID /adminslist /help """)
 
-===== MAIN BOT =====
+#===== MAIN BOT =====
 
 async def main(): load_data() app = ApplicationBuilder().token(BOT_TOKEN).build()
 
